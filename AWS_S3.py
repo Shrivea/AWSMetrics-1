@@ -10,6 +10,9 @@ VALID_STATISTICS_ = 'Valid statistics:'
 LATENCY_VALUES = ['minimum', 'maximum', 'p50', 'p90', 'p95', 'p99', 'p99.99']
 
 METRIC_HEADERS = ["metric_name", "metric stats"]
+mn = ["metric_name", "metric_type", "interval", "unit_name", "per_unit_name", "description", "orientation",
+                  "integration", "short_name", ]
+
 YAML_FILE = "AWS.S3.yaml"
 CSV_FILE = "AWS.S3.csv"
 csv2 = "AWS.stats.S3.csv"
@@ -126,7 +129,7 @@ class AWSS3Extractor:
         os.chdir('CSV_FOLDER')
         with open(CSV_FILE, 'w', newline='') as f:
             writer = csv.writer(f)
-            writer.writerow(METRIC_HEADERS)
+            writer.writerow(mn)
             writer.writerows(self.aws_list)
         os.chdir('..')
 
